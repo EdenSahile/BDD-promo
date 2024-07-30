@@ -8,22 +8,38 @@ dotenv.config();
 // import du package express avec require
 const express = require ('express');
 
+
+
+
+// je require mon router. que j'ai créé dans un autre fichier et que j'ai exporté dans l'autre fichier
+const router=require("./app/router.js")
+
+
 // exéctuer express (la variable app est la valeur de retour de la fonction ci-dessus express)
 const  app=express();
 
-// on définiti le port
+
+// ON PRÉcise quel moteur de rendu, on utilise
+// pas besoin de require EJS, expresse se débrouille
+app.set("view engine", 'ejs');
+// on precise le chemin des vues
+// __dirname = chemin du dossier courant
+app.set('views', __dirname+  '/app/views')
+
+// on indique a express où se trouve le dossier avec les assets statics
+
+app.use(express.static(__dirname + '/public/'))
+
+
+// on définiti le port, exemple ci-dessous avant d'utiliser les variables d'environnement. le plus simple. avec
+// les variable d'environnement; on utiliser en bas : process.envo
 //const PORT = 3002
 
+// j'utiliser mon router
 
-// routes
-
-app.get("/", (req,res)=>{
-    // fonction de callback (fonction passsée en param a une autre fonctione t qui est appelé plus tard.) ds ce cas, elle sera appellée
-    //quand on arrive sur l'url "/"
-    res.send("coucou")
+app.use(router)
 
 
-})
 
  
 // on lance notre serveur

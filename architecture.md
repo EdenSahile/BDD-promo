@@ -62,6 +62,10 @@ Je fais une copie de mon .env pour créer le .env.example.
 pour utiliser les variables d'environnement dans mon index.js. il faut installer  `dotenv`
 
 `npm i dotenv`
+
+
+
+
  
  https://www.npmjs.com/package/dotenv
 
@@ -70,6 +74,7 @@ pour utiliser les variables d'environnement dans mon index.js. il faut installer
  express
  nodemon
  dotenv 
+ ejs
 
 
 
@@ -83,3 +88,44 @@ git add .
 git commit -m 'mon texte'
 git remote add origin git@github.com:EdenSahile/BDD-promo.git
 git push -u origin main 
+
+Quand on récupère un projet :
+
+- on clonte
+- on fait npm i (installer les dépendances)
+- on créer un fichier `.env `en s'inspirant du `.env.example`
+- on crée le fichier (router.js) et on fait un module.exports et on le require dans le fichier index.js
+- on ajoute ejs.
+- on crée un dossier views pour nos différents pages (home.ejs)
+  - Il faut indiquer dans index.js qu'on va utiliser ejs (cf index.js)
+- ajouter les statics  (image)
+-  ne pas oublier les partials (header, footer etc..)
+
+
+
+## ON CRÉE LE RETOUR
+    CF `router.js`
+
+ ## Ajout des vues 
+
+Il nous faut un moteur de template : ejs
+`npm i ejs`
+
+
+Il nous faut un dosser `views` et un premier fichier `home.ejs`
+il faut indiquer à express qu'on va utiliser ejs; `cf index.js`
+
+## ajout du css
+on crée un dossier `public` à la racine et on y met notre css
+on indique a express où se trouve le dossier public qui contiendra les images, le css, enfin tous les fichiers statics;
+``
+
+
+## controller
+c'est un module sert a controller ce qu'il se passe quand on appelle nos routes
+ il y aura donc :
+ 1 fichier router => liste des routes
+ 1 fichier controllers => liste le comportement lorsque l'on est sur une routes.
+ séparation des concepts.
+ on crée un controller par page ou par grand concepts.
+ 
